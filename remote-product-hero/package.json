@@ -1,5 +1,5 @@
 {
-  "name": "pnpm-monorepo_host",
+  "name": "pnpm-monorepo_product",
   "version": "1.0.0",
   "author": {
     "name": "Russell Canfield",
@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "pnpm --filter pnpm-monorepo_* --parallel run build",
-    "start": "react-scripts start",
+    "start": "react-scripts start --port 3001",
 	"devBuild":"npx webpack build",
 	"serve":"webpack serve"
   },

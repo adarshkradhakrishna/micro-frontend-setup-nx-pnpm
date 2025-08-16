@@ -1,13 +1,12 @@
 {
-  "name": "pnpm-monorepo_host",
+  "name": "pnpm-monorepo",
   "version": "1.0.0",
   "author": {
-    "name": "Russell Canfield",
-    "email": "rcanfield86@gmail.com"
+    "name": "Adarsh"
   },
   "scripts": {
     "build": "pnpm --filter pnpm-monorepo_* --parallel run build",
-    "start": "react-scripts start",
+    "start": "pnpm --filter pnpm-monorepo_* --parallel run serve",
 	"devBuild":"npx webpack build",
 	"serve":"webpack serve"
   },

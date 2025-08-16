@@ -2,7 +2,6 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container
-
 const config = {
 	entry: {
 		app: "./src/index.tsx",
@@ -19,7 +18,7 @@ const config = {
 		extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
 	},
 	devServer: {
-		port: 3000,
+		port: 3001,
 		historyApiFallback: true,
 		open: true,
 		headers: {
@@ -70,10 +69,11 @@ const config = {
 			template: "./public/index.html",
 		}),
 		new ModuleFederationPlugin({
-			name: 'host',
-			remotes: {
-				product_hero: 'product_hero@http://localhost:3001/remoteEntry.js',
-			},
+			name: 'product_hero',
+			filename:'remoteEntry.js',
+			exposes:{
+				'./productHero':'./src/features/Products/components/ProductHero.tsx'
+			}
             
 
 		})
