@@ -2,9 +2,9 @@ import { ModuleFederationConfig } from '@nx/module-federation';
 
 const config: ModuleFederationConfig = {
   name: 'remote_product_hero',
-  exposes: {
-    './Module': './src/app/app.tsx',
-  },
+  // exposes: {
+  //   './Module': './src/app/app.tsx',
+  // },
 };
 
 /**

@@ -1,13 +1,8 @@
-import { StrictMode } from 'react';
-import * as ReactDOM from 'react-dom/client';
+import { createRoot } from "react-dom/client";
+// import ProductHero from "./features/Products/components/ProductHero";
+import "./index.css";
 
-import App from './app/app';
+const appElement = document.getElementById("app");
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+const root = createRoot(appElement!);
+root.render(<div>This is APP 2</div>);

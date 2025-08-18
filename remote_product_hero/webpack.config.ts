@@ -19,3 +19,4 @@ export default composePlugins(
   withReact(),
   withModuleFederation(config, { dts: false })
 );
+//"^build", "typecheck"

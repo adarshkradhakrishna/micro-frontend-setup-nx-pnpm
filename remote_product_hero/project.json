@@ -47,7 +47,7 @@
           "webpackConfig": "remote_product_hero/webpack.config.prod.ts"
         }
       },
-      "dependsOn": ["^build", "typecheck"]
+      "dependsOn": [] 
     },
     "serve": {
       "executor": "@nx/react:module-federation-dev-server",

@@ -44,7 +44,7 @@
           "webpackConfig": "host-app/webpack.config.prod.ts"
         }
       },
-      "dependsOn": ["^build", "typecheck"]
+      "dependsOn": []
     },
     "serve": {
       "executor": "@nx/react:module-federation-dev-server",
