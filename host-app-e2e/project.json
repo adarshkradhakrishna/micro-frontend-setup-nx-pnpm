@@ -1,0 +1,20 @@
+{
+  "name": "host-app-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "host-app-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["host-app"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": ["{workspaceRoot}/dist/.playwright/host-app-e2e"],
+      "options": {
+        "config": "host-app-e2e/playwright.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

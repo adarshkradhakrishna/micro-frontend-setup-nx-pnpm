@@ -1,0 +1,97 @@
+{
+  "name": "remote_product_hero",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "remote_product_hero/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "remote_product_hero/dist",
+        "index": "remote_product_hero/src/index.html",
+        "baseHref": "/",
+        "main": "remote_product_hero/src/main.ts",
+        "tsConfig": "remote_product_hero/tsconfig.app.json",
+        "assets": [
+          "remote_product_hero/src/favicon.ico",
+          "remote_product_hero/src/assets"
+        ],
+        "styles": ["remote_product_hero/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "remote_product_hero/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "remote_product_hero/src/environments/environment.ts",
+              "with": "remote_product_hero/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "remote_product_hero/webpack.config.prod.ts"
+        }
+      },
+      "dependsOn": ["^build", "typecheck"]
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "remote_product_hero:build",
+        "hmr": true,
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "remote_product_hero:build:development"
+        },
+        "production": {
+          "buildTarget": "remote_product_hero:build:production",
+          "hmr": false
+        }
+      },
+      "dependsOn": ["typecheck"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/react:module-federation-static-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "serveTarget": "remote_product_hero:serve"
+      },
+      "configurations": {
+        "development": {
+          "serveTarget": "remote_product_hero:serve:development"
+        },
+        "production": {
+          "serveTarget": "remote_product_hero:serve:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{projectRoot}/test-output/jest/coverage"],
+      "options": {
+        "jestConfig": "remote_product_hero/jest.config.ts"
+      }
+    }
+  }
+}

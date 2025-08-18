@@ -1,3 +1,4 @@
 packages:
-  - "main-app"
-  - "remote-product-hero"
+  - 'packages/*'
+  - 'host-app'
+  - 'remote_product_hero'

@@ -1,0 +1,94 @@
+{
+  "name": "host-app",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "host-app/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "host-app/dist",
+        "index": "host-app/src/index.html",
+        "baseHref": "/",
+        "main": "host-app/src/main.ts",
+        "tsConfig": "host-app/tsconfig.app.json",
+        "assets": ["host-app/src/favicon.ico", "host-app/src/assets"],
+        "styles": ["host-app/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "host-app/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "host-app/src/environments/environment.ts",
+              "with": "host-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "host-app/webpack.config.prod.ts"
+        }
+      },
+      "dependsOn": ["^build", "typecheck"]
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "host-app:build",
+        "hmr": true,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "host-app:build:development"
+        },
+        "production": {
+          "buildTarget": "host-app:build:production",
+          "hmr": false
+        }
+      },
+      "dependsOn": ["typecheck"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/react:module-federation-static-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "serveTarget": "host-app:serve"
+      },
+      "configurations": {
+        "development": {
+          "serveTarget": "host-app:serve:development"
+        },
+        "production": {
+          "serveTarget": "host-app:serve:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{projectRoot}/test-output/jest/coverage"],
+      "options": {
+        "jestConfig": "host-app/jest.config.ts"
+      }
+    }
+  }
+}
