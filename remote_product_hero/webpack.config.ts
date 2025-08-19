@@ -4,7 +4,8 @@ import { withModuleFederation } from '@nx/module-federation/webpack.js';
 
 import baseConfig from './module-federation.config';
 
-const config = {
+
+const moduleFederationConfig = {
   ...baseConfig,
 };
 
@@ -17,6 +18,16 @@ const config = {
 export default composePlugins(
   withNx(),
   withReact(),
-  withModuleFederation(config, { dts: false })
+  withModuleFederation(moduleFederationConfig, { dts: false }),
+  (config:any)=>{
+
+    config.devServer = {
+      ...config.devServer,
+      static: config.output.path,
+    };
+
+    return config;
+
+  }
 );
 //"^build", "typecheck"

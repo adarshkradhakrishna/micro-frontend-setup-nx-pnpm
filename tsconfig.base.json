@@ -19,7 +19,7 @@
     "customConditions": ["development"],
     "baseUrl": ".",
     "paths": {
-      "remote_product_hero/Module": ["remote_product_hero/src/remote-entry.ts"]
+      "remote_product_hero/*": ["remote_product_hero/src/*"]
     }
   }
 }

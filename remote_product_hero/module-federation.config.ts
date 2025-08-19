@@ -2,9 +2,31 @@ import { ModuleFederationConfig } from '@nx/module-federation';
 
 const config: ModuleFederationConfig = {
   name: 'remote_product_hero',
-  // exposes: {
-  //   './Module': './src/app/app.tsx',
-  // },
+  exposes: {
+    './Module': './src/features/Products/components/ProductHero.tsx',
+  },
+  shared:(name,config)=>{
+     return false
+  },
+  additionalShared: [
+    {
+      libraryName: 'react',
+      sharedConfig: {
+        eager: false,
+        singleton: true,
+        requiredVersion: '19.0.0',
+      },
+    },
+    {
+      libraryName: 'react-dom',
+      sharedConfig: {
+        eager: false,
+        singleton: true,
+        requiredVersion: '19.0.0',
+      },
+    },
+  ],
+  library: { type: "var", name: "remote_product_hero" },
 };
 
 /**

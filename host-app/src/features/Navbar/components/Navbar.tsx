@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "React";
+import { useLayoutEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import { SunIcon, MoonIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ const getColorScheme = () =>
 const isThemeDark = (theme: Theme) => (theme === "dark" ? true : false);
 
 const Navbar = () => {
+
 	useLayoutEffect(() => {
 		const currentTheme = getColorScheme();
 		changeTheme(currentTheme);

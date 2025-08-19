@@ -18,5 +18,12 @@ const config: ModuleFederationConfig = {
 export default composePlugins(
   withNx(),
   withReact(),
-  withModuleFederation(config, { dts: false })
+  withModuleFederation(config, { dts: false }),
+  (config:any) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      path: false,
+    };
+    return config;
+  }
 );

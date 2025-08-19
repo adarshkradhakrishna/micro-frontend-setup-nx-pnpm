@@ -7,7 +7,9 @@
     },
     {
       "path": "./tsconfig.spec.json"
-    }
+    },
+    { "path": "../remote_product_hero" }
+
   ],
   "extends": "../tsconfig.base.json"
 }

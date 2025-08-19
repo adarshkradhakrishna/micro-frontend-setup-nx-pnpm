@@ -15,6 +15,28 @@ const config: ModuleFederationConfig = {
    *
    */
   remotes: ['remote_product_hero'],
+  shared: (name, config) => {
+    return false;
+  },
+  additionalShared: [
+    {
+      libraryName: 'react',
+      sharedConfig: {
+        eager: false,
+        singleton: true,
+        requiredVersion: '19.0.0',
+      },
+    },
+    {
+      libraryName: 'react-dom',
+      sharedConfig: {
+        eager: false,
+        singleton: true,
+        requiredVersion: '19.0.0',
+      },
+    },
+  ],
+
 };
 
 /**

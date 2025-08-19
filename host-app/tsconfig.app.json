@@ -30,6 +30,17 @@
     "eslint.config.cjs",
     "eslint.config.mjs"
   ],
-  "files": ["global.d.ts"],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx","global.d.ts"]
+  "files": ["../global.d.ts"],
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../global.d.ts"
+  ],
+  "references": [
+    {
+      "path": "../remote_product_hero/tsconfig.app.json"
+    }
+  ]
 }

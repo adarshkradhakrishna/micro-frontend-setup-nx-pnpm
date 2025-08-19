@@ -1,9 +1,8 @@
 import { ProductsOnSale } from "../../Products";
 import styles from "./Home.module.css";
 import useScreenSize from "../../Products/hooks/useScreenSize";
-import { Suspense } from "react";
-
-// const ProductHero = lazy(()=>import('product_hero/productHero'))
+import { Suspense,lazy } from "react";
+const ProductHero = lazy(()=>import('remote_product_hero/Module'))
 
 const bodyElement = document.querySelector("body")!;
 
@@ -16,7 +15,7 @@ const Home = () => {
 		<section className={styles["home"]}>
 			{!isSmallScreen && 
 			<Suspense fallback={<div>Loading..</div>}>
-				<div>Loading Ended.....</div>
+				<ProductHero />
 			</Suspense>
 			}
 			<ProductsOnSale />
