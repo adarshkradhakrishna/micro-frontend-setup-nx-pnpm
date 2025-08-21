@@ -4,6 +4,7 @@ const config: ModuleFederationConfig = {
   name: 'remote_product_hero',
   exposes: {
     './Module': './src/features/Products/components/ProductHero.tsx',
+    './Contacts': './src/features/Products/components/Contacts.tsx',
   },
   shared:(name,config)=>{
      return false

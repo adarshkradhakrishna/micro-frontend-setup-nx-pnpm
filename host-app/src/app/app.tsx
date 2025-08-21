@@ -5,7 +5,7 @@ import { Navbar } from "../features/Navbar";
 
 const Products = lazy(() => import("../features/Products/components/ProductsOnSale"));
 const Cart = lazy(() => import("../features/Cart/components/Cart"));
-
+const Contact = lazy(() => import('remote_product_hero/Contacts'))
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -36,6 +36,14 @@ const router = createBrowserRouter([
 					</Suspense>
 				),
 			},
+			{
+				path: "/contact",
+				element: (
+					<Suspense fallback={<p>Loading....</p>}>
+						<Contact />
+					</Suspense>
+				)
+			}
 		],
 	},
 ]);
