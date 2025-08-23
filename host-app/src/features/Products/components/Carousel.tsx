@@ -1,10 +1,14 @@
 import styles from "./Carousel.module.css";
 import { ProductSaleData } from "../../../data/ProductData";
 import ProductCard from "./ProductCard";
-import { useCart } from "../../../hooks";
+//import { useCart } from "../../../hooks";
+import { useContext } from "react";
+import { ProductContext } from "../../../app/app";
 
 const ProductCarousel = () => {
-	const { addToCart } = useCart();
+	//const { addToCart } = useCart();
+
+	const {addToCart} =useContext(ProductContext)
 
 	return (
 		<ul className={styles["product-carousel"]}>

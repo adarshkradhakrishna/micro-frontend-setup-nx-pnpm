@@ -30,17 +30,21 @@
     "eslint.config.cjs",
     "eslint.config.mjs"
   ],
-  "files": ["../global.d.ts"],
+  //"files": ["../global.d.ts","../packages/shared-state/src/index.ts"],
   "include": [
     "src/**/*.js",
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "../global.d.ts"
+    "../global.d.ts",
+    "../packages/shared-state/src/index.ts"
   ],
   "references": [
     {
       "path": "../remote_product_hero/tsconfig.app.json"
+    },
+    {
+      "path": "../packages/shared-state/tsconfig.lib.json"
     }
   ]
 }

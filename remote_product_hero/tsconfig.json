@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../packages/shared-state"
+    },
+    {
       "path": "./tsconfig.app.json"
     },
     {
@@ -11,6 +14,6 @@
   ],
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "composite": true,
+    "composite": true
   }
 }

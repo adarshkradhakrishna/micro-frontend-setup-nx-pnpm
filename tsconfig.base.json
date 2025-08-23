@@ -19,6 +19,7 @@
     "customConditions": ["development"],
     "baseUrl": ".",
     "paths": {
+      "@shared/state": ["packages/shared-state/src/index.ts"],
       "remote_product_hero/*": ["remote_product_hero/src/*"]
     }
   }

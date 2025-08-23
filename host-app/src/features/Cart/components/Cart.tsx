@@ -1,10 +1,13 @@
 import { ProductCard } from "../../Products";
 import styles from "./Cart.module.css";
-import useCart from "../hooks/useCart";
+//import useCart from "../hooks/useCart";
+import { useContext } from "react";
+import { ProductContext } from "../../../app/app";
 
 const Cart = () => {
-	const { cart, removeFromCart } = useCart();
-
+	//const { cart, removeFromCart } = useCart();
+	const {products,removeFromCart}=useContext(ProductContext)
+    const cart={products}
 	const total = cart.products.reduce((acc, product) => {
 		return acc + product.price;
 	}, 0);

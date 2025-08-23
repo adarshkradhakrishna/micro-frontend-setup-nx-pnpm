@@ -1,17 +1,19 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Home } from "../features/Home";
-import { lazy, Suspense } from "react";
+import { Context, createContext, lazy, Suspense, useState } from "react";
 import { Navbar } from "../features/Navbar";
 import useSyncGlobalRouter from "../features/Products/hooks/useSyncRouteChange";
+import { Product,ProductContextT } from "@shared/state";
+
 
 const Products = lazy(() => import("../features/Products/components/ProductsOnSale"));
 const Cart = lazy(() => import("../features/Cart/components/Cart"));
 const Contact = lazy(() => import('remote_product_hero/Contacts'))
 
-function HandleRoutes(){
+function HandleRoutes() {
 	useSyncGlobalRouter('/contact')
 	return (
-      <Contact />
+		<Contact />
 	)
 }
 const router = createBrowserRouter([
@@ -45,7 +47,7 @@ const router = createBrowserRouter([
 				),
 			},
 			{
-				path: "/contact/*",	
+				path: "/contact/*",
 				element: (
 					<Suspense fallback={<p>Loading....</p>}>
 						<HandleRoutes />
@@ -56,8 +58,31 @@ const router = createBrowserRouter([
 	},
 ]);
 
+export const ProductContext = createContext<ProductContextT>({ products: [] })
+
+declare global{
+	interface Window {
+		ProductContext: Context<ProductContextT>
+	}
+
+}
+window.ProductContext = ProductContext;
+
 const App = () => {
-	return <RouterProvider router={router} />;
+	const [products, setProducts] = useState([])
+
+	function addToCart(product: Product) {
+		setProducts([...products, product])
+	}
+
+	function removeFromCart(productId){
+		setProducts(products.filter(
+				(product) => product.id !== productId
+			));
+	}
+	return <ProductContext.Provider value={{ products, addToCart,removeFromCart }}>
+		<RouterProvider router={router} />
+	</ProductContext.Provider>
 };
 
 export default App;
