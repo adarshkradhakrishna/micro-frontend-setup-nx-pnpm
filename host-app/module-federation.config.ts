@@ -35,14 +35,22 @@ const config: ModuleFederationConfig = {
         requiredVersion: '19.0.0',
       },
     },
+    {
+      libraryName: '@tanstack/react-query',
+      sharedConfig: {
+        eager: false,
+        singleton: true,
+        requiredVersion: false,
+      },
+    },
     // {
-    //   libraryName: 'react-router-dom',
+    //   libraryName: '@shared/state',
     //   sharedConfig: {
     //     eager: false,
     //     singleton: true,
-    //     requiredVersion: '6.29.0',
+    //     requiredVersion: false,
     //   },
-    // }
+    // },
   ],
 
 };

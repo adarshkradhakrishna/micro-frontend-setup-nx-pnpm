@@ -3,12 +3,12 @@ import { Home } from "../features/Home";
 import { Context, createContext, lazy, Suspense, useState } from "react";
 import { Navbar } from "../features/Navbar";
 import useSyncGlobalRouter from "../features/Products/hooks/useSyncRouteChange";
-import { Product,ProductContextT } from "@shared/state";
-
+import {  Product,ProductContextT,D_name } from "@shared/state";
 
 const Products = lazy(() => import("../features/Products/components/ProductsOnSale"));
 const Cart = lazy(() => import("../features/Cart/components/Cart"));
 const Contact = lazy(() => import('remote_product_hero/Contacts'))
+
 
 function HandleRoutes() {
 	useSyncGlobalRouter('/contact')

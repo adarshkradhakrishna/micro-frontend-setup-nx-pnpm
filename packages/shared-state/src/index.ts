@@ -1,2 +1,2 @@
-export * from './lib/shared-state.js';
-export * from './lib/types.js'
+export * from './lib/types'
+export * from './lib/shared-state'

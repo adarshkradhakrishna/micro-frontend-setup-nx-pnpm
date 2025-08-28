@@ -27,15 +27,22 @@ const config: ModuleFederationConfig = {
       },
       
     },
-    // {
-    //   libraryName: 'react-router-dom',
-    //   sharedConfig: {
-    //     eager: false,
-    //     singleton: true,
-    //     requiredVersion: '6.29.0',
-    //   },
-      
-    // },
+    {
+      libraryName: '@tanstack/react-query',
+      sharedConfig: {
+        eager: false,
+        singleton: true,
+        requiredVersion: false,
+      },
+    },
+    {
+      libraryName: '@shared/state',
+      sharedConfig: {
+        eager: false,
+        singleton: true,
+        requiredVersion: false,
+      },
+    },
   ],
   library: { type: "var", name: "remote_product_hero" },
 };

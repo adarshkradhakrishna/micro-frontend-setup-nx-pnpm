@@ -27,3 +27,5 @@ export type ProductContextT = {
 	addToCart?: (product: Product) => void,
 	removeFromCart?:(productId: string) => void
 }
+
+export const D_name = "adarshK"
